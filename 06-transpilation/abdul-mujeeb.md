@@ -1,18 +1,29 @@
 # Transpilation
 
-## What?
+## What is trasnpilation?
 
 Transpilation is the process of converting one source code into another form of source code.
 
 ```text
 Source code → Transpiler → Other source code
 ```
+### Difference Between Transpilation and Compilation
 
-## When?
+**Transpilation** is a process of converting code written in a high-level language into another high-level language while keeping a similar level of abstraction, usually for compatibility.
 
-Transpilation is performed before the code is served to the browser. It is a kind of development process. Before a code is served, it is transpiled first.
+While **compilation** is the process of converting source code into a lower-level representation, such as machine code.
 
-## Why?
+For example:
+
+```text
+Transpilation:
+Modern JavaScript → Older JavaScript
+
+Compilation:
+High-level source code → Machine code
+```
+
+## Why it exists?
 
 For the purpose of **compatibility**.
 
@@ -20,9 +31,9 @@ Say a person uses the newer syntax/style to write code for the sake of concisene
 
 Another reason for transpilation is that some languages, such as TypeScript, cannot be executed directly by the browser. Therefore, TypeScript code can be transpiled into JavaScript, which the browser can execute.
 
-## Tool?
+## How?
 
-The process is done by a software tool/program, e.g.
+Transpilation is performed before the code is served to the browser. It is a kind of development process. Before a code is served, it is transpiled first. The process is done by a software tool/program, e.g.
 
 * **Babel**
   A tool that converts JavaScript into JavaScript, like a newer version into an older version.
@@ -30,9 +41,7 @@ The process is done by a software tool/program, e.g.
 * **TypeScript compiler (`tsc`)**
   A compiler which converts TypeScript code into JavaScript.
 
----
-
-## Basic Process
+### Basic Process
 
 1. A person writes code, then the transpiler is run when the file is saved or as per the developer's settings.
 
@@ -50,7 +59,7 @@ The process is done by a software tool/program, e.g.
 
    `Transformed AST → Code generator → Transpiled code → Browser`
 
-### Overall Process
+#### Overall Process
 
 ```text
 Write source code
@@ -70,17 +79,17 @@ Transpiled source code
 
 ---
 
-## Process Example
+#### Process Example
 
-### TypeScript into JavaScript
+##### TypeScript into JavaScript
 
-1. ### TypeScript Source Code
+1. ###### TypeScript Source Code
 
    ```ts
    let age: number = 28;
    ```
 
-2. ### Parser
+2. ###### Parser
 
    #### Understands the Structure
 
@@ -88,7 +97,7 @@ Transpiled source code
    * Type of the variable is `number`
    * Value of the variable is `28`
 
-   ### AST
+   ###### AST
 
    Abstract Syntax Tree is the structured representation of the parsed code.
 
@@ -98,13 +107,13 @@ Transpiled source code
      * type = `number`
      * value = `28`
 
-3. ### Transform the AST
+3. ###### Transform the AST
 
    For JavaScript, remove the TypeScript-specific information:
 
    * `: number`
 
-4. ### Code Generator
+4. ###### Code Generator
 
    Generate the JavaScript source code:
 
@@ -112,7 +121,7 @@ Transpiled source code
    let age = 28;
    ```
 
-   ### Export
+   ###### Export
 
    The transpiled code is delivered to the browser, so the JavaScript can be executed.
 
@@ -231,48 +240,6 @@ Verified using the [Babel REPL](https://babeljs.io/repl).
 
 ---
 
-## Difference Between Transpilation and Minification
-
-**Transpilation** converts the code into another version or form for the sake of compatibility, such as from modern JavaScript to an older version of JavaScript.
-
-On the other hand, **minification** is the process of removing unnecessary whitespace, comments, and, when possible, reducing variable names for the sake of reducing file size and improving performance.
-
-For example, consider the following code:
-
-```js
-var multiply = function multiply(a, b) {
-    return a * b;
-};
-```
-
-After **minification**, it can become something like:
-
-```js
-var m = function multiply(a,b){return a*b;};
-```
-
-The language and logic remain the same. The main purpose is to make the code smaller.
-
----
-
-## Difference Between Transpilation and Compilation
-
-**Transpilation** is a process of converting code written in a high-level language into another high-level language while keeping a similar level of abstraction, usually for compatibility.
-
-While **compilation** is the process of converting source code into a lower-level representation, such as machine code.
-
-For example:
-
-```text
-Transpilation:
-Modern JavaScript → Older JavaScript
-
-Compilation:
-High-level source code → Machine code
-```
-
----
-
 ## Source Maps
 
 Mostly, the code executed by the browser is transformed in some format, either transpiled or minified, from the original source code written by the developer.
@@ -296,6 +263,29 @@ Generated JavaScript
         ↑
 Original source code
 ```
+---
+
+## Difference Between Transpilation and Minification
+
+**Transpilation** converts the code into another version or form for the sake of compatibility, such as from modern JavaScript to an older version of JavaScript.
+
+On the other hand, **minification** is the process of removing unnecessary whitespace, comments, and, when possible, reducing variable names for the sake of reducing file size and improving performance.
+
+For example, consider the following code:
+
+```js
+var multiply = function multiply(a, b) {
+    return a * b;
+};
+```
+
+After **minification**, it can become something like:
+
+```js
+var m = function multiply(a,b){return a*b;};
+```
+
+The language and logic remain the same. The main purpose is to make the code smaller.
 
 ---
 
